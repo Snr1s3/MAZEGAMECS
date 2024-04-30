@@ -11,6 +11,7 @@ class UI
         print("THE MAZE GAME");
         print("=============");
         print("Press H for help");
+        Console.WriteLine();
     }
 
     public static void help()

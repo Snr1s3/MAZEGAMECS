@@ -1,10 +1,20 @@
 using System;
+using System.IO;
 class MazeGame
 {
     public static int x = 0;
     public static string y="";
-    static void Main()
+    static void Main(string[] args)
     {
+        string filename = argsCheck(args);
+        if(filename.Equals("BREAK")){
+            return;
+        }
+        if (!File.Exists("mazes/"+filename))
+        {
+            Console.WriteLine($"File {filename} does not exist.");
+            return;
+        }
         UI.header();  
         Maze maze =new Maze(5);
         maze.DisplayMaze(maze);
@@ -33,5 +43,20 @@ class MazeGame
             Console.WriteLine();
             maze.DisplayMaze(maze);
         }
+    }
+
+    public static string argsCheck(string[] args){
+        if (args.Length < 1)
+        {
+            Console.WriteLine("Please provide the size of the maze as a command line argument.");
+            return "BREAK";
+        }
+        if(args[0].Contains(".") && !args[0].EndsWith(".dat")){
+            return "BREAK";
+        }
+        if(!args[0].EndsWith(".dat")){
+            args[0]+=".dat";
+        }
+        return args[0];
     }
 }

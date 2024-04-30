@@ -30,6 +30,7 @@ public class Maze
             }
             Console.WriteLine();
         }
+        Console.WriteLine();
     }
     // Other methods for the Maze class
 }
