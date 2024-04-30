@@ -22,5 +22,6 @@ class UI
         print("L -> Left");
         print("R -> Right");
         print("H -> Help");
+        print("Q -> Quit");
     }
 }

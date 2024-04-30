@@ -3,11 +3,16 @@ using System;
 public class Maze
 {
     // Define the properties of the Maze here
-    public char[][] mazeChars;
+    private char[][] mazeChars;
+    private string filename="";
+    private string  mazeName="";
+
 
     // Constructor
-    public Maze(int maze)
-    {
+    public Maze(int maze, string name)
+    {   
+        filename=name;
+        mazeName = name.Replace("mazes/","");
         mazeChars = new char[maze][];
         for (int i = 0; i < maze; i++)
         {

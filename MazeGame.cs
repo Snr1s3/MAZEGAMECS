@@ -10,16 +10,13 @@ class MazeGame
         if(filename.Equals("BREAK")){
             return;
         }
-        if (!File.Exists("mazes/"+filename))
-        {
-            Console.WriteLine($"File {filename} does not exist.");
-            return;
-        }
+    
         UI.header();  
-        Maze maze =new Maze(5);
+        Maze maze =new Maze(5, filename);
         maze.DisplayMaze(maze);
 
-        while(true){
+        while(true)
+        {
             Console.Write("Enter your move: ");
             string move = Console.ReadLine();
             if(move == "F" || move == "f"){
@@ -34,8 +31,11 @@ class MazeGame
                 y = "R";
                 Console.WriteLine(y);
             }
-            else if(move == "H"){
+            else if(move == "H" || move == "h"){
                 UI.help();
+            }
+            else if(move == "Q" || move == "q"){
+                break;
             }
             else{
                 Console.WriteLine("Invalid move");
@@ -45,7 +45,8 @@ class MazeGame
         }
     }
 
-    public static string argsCheck(string[] args){
+    public static string argsCheck(string[] args)
+    {
         if (args.Length < 1)
         {
             Console.WriteLine("Please provide the size of the maze as a command line argument.");
@@ -58,6 +59,12 @@ class MazeGame
         if(!args[0].EndsWith(".dat")){
             args[0]+=".dat";
         }
-        return args[0];
+        string filename = "mazes/"+args[0];
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine($"File {filename} does not exist.");
+            return "BREAK";
+        }
+        return filename;
     }
 }
