@@ -52,6 +52,7 @@ class MazeGame
             return "BREAK";
         }
         if(args[0].Contains(".") && !args[0].EndsWith(".dat")){
+            Console.WriteLine("Please provide an argument with a valid extension");
             return "BREAK";
         }
         if(!args[0].EndsWith(".dat")){
