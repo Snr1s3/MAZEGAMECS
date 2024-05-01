@@ -20,6 +20,31 @@ class Record
         return false;
     }
 
+    public  void newRecord(bool record, int attempts, string mazeName){
+        UI.printAttemptsRecord(attempts);
+        Console.WriteLine();
+        if(!record || attempts< int.Parse(recordInfo[1])){
+            using (StreamWriter writer = new StreamWriter("mazes/mazeDB.csv", true))
+            {
+                writer.WriteLine(); // Add a new line
+                UI.printNewRecord(true);
+                string name = Console.ReadLine();
+                while (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine();
+                    UI.printNewRecord(true);
+                    name = Console.ReadLine();
+                }
+                name = name.Trim();
+                string newLine = $"{mazeName},{attempts},{name}";
+                writer.WriteLine(newLine); // Write the new line
+            }
+        }
+        else{
+            UI.printNewRecord(false);
+        }
+    }
+
     public  string[] getRecord(){
         return recordInfo;
     }
