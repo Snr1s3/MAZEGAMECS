@@ -1,5 +1,6 @@
 // Maze.cs
 using System;
+using System.IO;
 public class Maze
 {
     // Define the properties of the Maze here
@@ -25,17 +26,17 @@ public class Maze
     }
     public void getMaze()
     { 
-        printMaze(maze);
+        printMaze(mazeChars);
     }
 
     public void setMaze()
     { 
-        maze = readMaze(mazeFileName);
+        mazeChars = readMaze(filename);
     }
 
     public char[][] getMazeMap()
     { 
-        return maze;
+        return mazeChars;
     }
 
     public string getMazeName()
@@ -44,9 +45,9 @@ public class Maze
     }
     public int[] startPosition(char[][] maze)
     {
-        for (int i = 0; i < maze.length; i++)
+        for (int i = 0; i < maze.Length; i++)
         {
-            for (int p = 0; p< maze[0].length; p++)
+            for (int p = 0; p< maze[0].Length; p++)
             {
                 if (maze[i][p] == 'E' || maze[i][p] == 'L' || maze[i][p] == 'R' || maze[i][p] == 'D' ||maze[i][p] == 'U')
                 {
@@ -64,18 +65,42 @@ public class Maze
             return true;
         }
         maze[x][y] = 'X'; // Mark the current position as visited
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // right, down, left, up
-        for (int i = 0; i < directions.length; i++)
+        int[][] directions = { new int[] {0, 1}, new int[] {1, 0}, new int[] {0, -1}, new int[] {-1, 0} };// right, down, left, up
+        for (int i = 0; i < directions.Length; i++)
         {
             int newX = x + directions[i][0], newY = y + directions[i][1];
-            if (newX >= 0 && newX < maze.length && newY >= 0 && newY < maze[0].length && maze[newX][newY] != 'X' && canFinish(maze, newX, newY))
+            if (newX >= 0 && newX < maze.Length && newY >= 0 && newY < maze[0].Length && maze[newX][newY] != 'X' && canFinish(maze, newX, newY))
             {
                 return true;
             }
         }
         return false;
     }
-
+    public static char[][] readMaze(string path)
+    {
+        string[] lines = File.ReadAllLines(path);
+        string[] size = lines[0].Split('x');
+        int rows = int.Parse(size[0]);
+        int cols = int.Parse(size[1]);
+        char[][] maze = new char[rows][];
+        for (int i = 0; i < maze.Length; i++)
+        {
+            maze[i] = new char[cols];
+            for (int j = 0; j < maze[i].Length; j++)
+            {
+                maze[i][j] = lines[i + 1][j];
+            }
+        }
+        return maze;
+    }
+    public static bool checkMaze(string filePath){
+        FileInfo file = new FileInfo(filePath);
+        if (file.Length == 0)
+        {
+            return true;
+        }
+        return false;     
+    }
     public static void printMaze(char[][] maze)
     { //Print the maze translated to a graphic representation
         for(int i = 0; i< maze.Length; i++)
@@ -157,8 +182,8 @@ public class Maze
         }
     }
     public static bool argsNumCheck(String[] args){
-        if(args.length != 1){
-            if( args.length==0){
+        if(args.Length != 1){
+            if( args.Length==0){
                 UI.printErrors(6);
             }
             else{
@@ -169,16 +194,16 @@ public class Maze
         return true;
     }
 
-    public static bool argExtensionCheck(String filename){
-        if(filename.endsWith(".dat") || !filename.contains(".")) {
+    public static bool argExtensionCheck(string filename){
+        if(filename.EndsWith(".dat") || !filename.Contains(".")) {
             return true;
         }
         UI.printErrors(5);
         return false;
     }
 
-    public static bool MazeCheck(File file, boolean emptyMaze, String filename){
-        if(file.exists()) { // Checking if the file exists
+    public static bool MazeCheck(bool emptyMaze, string filename){
+        if(File.Exists(filename)) { // Checking if the file exists
             emptyMaze =!checkMaze(filename);
             if(!emptyMaze){
                 UI.printErrors(1);
@@ -192,6 +217,8 @@ public class Maze
         }
         
     }
+
+    
     public void DisplayMaze(){
         for (int i = 0; i < mazeChars.Length; i++)
         {

@@ -90,7 +90,6 @@ class UI
     {
         header(); // Printing the header
         if(hasRecord){
-            record.storeRecord(laberint.getMazeName());
             printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         }
         else{
