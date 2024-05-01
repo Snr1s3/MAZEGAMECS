@@ -21,13 +21,13 @@ class Player
         return player;
     }
 
-    public int getIntents()
+    public int getAttempts()
     {
         if(player == null ) player = new Player();
         return attempts;
     }
 
-    public int[] getPosicio()
+    public int[] getPosition()
     {
         return playerPosi;
     }

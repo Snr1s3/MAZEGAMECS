@@ -55,9 +55,11 @@ class Input
             switch (currentChar)
             {
                 case 'Q':
+                    UI.printQ();
+                    return true;
                 case 'H':
-                    contains = true;
-                    break;
+                    UI.help();
+                    return true;
                 default:
                     break;
             }            

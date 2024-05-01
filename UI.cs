@@ -11,7 +11,6 @@ class UI
         print("THE MAZE GAME");
         print("=============");
         print("Press H for help");
-        Console.WriteLine();
     }
 
     public static void help()
@@ -44,7 +43,7 @@ class UI
         print("Actual attempt 1");
     }
 
-    public static void printPrompt(string mazeName)
+    public static void userPrompt(string mazeName)
     {
         Console.WriteLine("┌─("+mazeName+")");
         print("│");
@@ -62,65 +61,66 @@ class UI
     public static void printMazeAndMove(int attempts, Maze maze){
         print(""); 
         // Print the current number of attempts
-        Console.WriteLine("Intents actuals: "+  attempts);
+        Console.WriteLine("Actual attempts: "+  attempts);
             // Print the current state of the maze
-        maze.DisplayMaze();
+        Maze.printMaze(maze.getMazeMap());
+        //maze.DisplayMaze();
         print("");
     }
 
     public static void printAttemptsRecord(int attempts){
         if(attempts == 1){
-            Console.WriteLine("Has resolt el laberint en "+  attempts+" intent");
+            Console.WriteLine("Maze finished in "+  attempts+" attempt");
         }
         else{
-            Console.WriteLine("Has resolt el laberint en "+  attempts+" intents");
+            Console.WriteLine("Maze finished in "+  attempts+" attempts");
         }
     }
 
     public static void printNewRecord(bool record){
         if(record){
-            print("Nou rècord! Indica el teu nom:");
+            print("New record! Enter your name:");
         }
         else{
-            print("No has superat el rècord. Potser la següent vegada.");
+            print("You haven't broken the record. Maybe next time.");
         }
     }
 
-    public static void printAllHeader(Maze laberint ,Record record, bool hasRecord)
+    public static void printAllHeader(Maze maze ,Record record, bool hasRecord)
     {
         header(); // Printing the header
         if(hasRecord){
-            printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
+            printMazeInfo(maze.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         }
         else{
-            printMazeInfo(laberint.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
+            printMazeInfo(maze.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         } 
     }
     public static void printErrors(int numError){
         switch(numError){
             case 1 :
-                print("No hi ha cap laberint");
+                print("No maze found");
                 break;
             case 2 :
-                print("Moviment invàlid");
+                print("Invalid move");
                 break;
             case 3 :
-                print("No es pot arribar al final del laberint");
+                print("Can't finish the maze");
                 break;
             case 4 :
-                print("Laberint no existent");
+                print("Maze not found");
                 break;
             case 5 :
-                print("Extensió del fitxer invàlida");
+                print("Invalid file");
                 break;
             case 6 :
-                print("Cap argument especificat");
+                print("No argument found");
                 break;
             case 7 :
-                print("Masses arguments especificats");
+                print("To much arguments");
                 break;
             case 8 :
-                print("Cap moviment fet");
+                print("No movement done");
                 break;
         }
     }

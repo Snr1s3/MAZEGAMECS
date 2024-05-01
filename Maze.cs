@@ -10,19 +10,10 @@ public class Maze
 
 
     // Constructor
-    public Maze(int maze, string name)
+    public Maze(string name)
     {   
         filename=name;
         mazeName = name.Replace("mazes/","");
-        mazeChars = new char[maze][];
-        for (int i = 0; i < maze; i++)
-        {
-            mazeChars[i] = new char[maze];
-            for (int j = 0; j < maze; j++)
-            {
-                mazeChars[i][j] = '0';
-            }
-        }
     }
     public void getMaze()
     { 
@@ -103,6 +94,7 @@ public class Maze
     }
     public static void printMaze(char[][] maze)
     { //Print the maze translated to a graphic representation
+        
         for(int i = 0; i< maze.Length; i++)
         {            
             for(int p =0;p<maze[i].Length;p++)
