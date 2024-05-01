@@ -5,7 +5,8 @@ class MazeGame
     public static int x = 0;
     public static string y="";
     static void Main(string[] args)
-    {
+    {   
+        int attempts=1;
         string filename = argsCheck(args);
         if(filename.Equals("BREAK")){
             return;
@@ -13,11 +14,11 @@ class MazeGame
     
         UI.header();  
         Maze maze =new Maze(5, filename);
-        maze.DisplayMaze(maze);
+        maze.DisplayMaze();
 
         while(true)
         {
-            Console.Write("Enter your move: ");
+            UI.printPrompt("");
             string move = Console.ReadLine();
             if(move == "F" || move == "f"){
                 x++;
@@ -35,13 +36,14 @@ class MazeGame
                 UI.help();
             }
             else if(move == "Q" || move == "q"){
+                UI.printQ();
                 break;
             }
             else{
                 Console.WriteLine("Invalid move");
             }
             Console.WriteLine();
-            maze.DisplayMaze(maze);
+            UI.printMazeAndMove(attempts, maze);
         }
     }
 
