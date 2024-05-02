@@ -66,23 +66,30 @@ class Input
         }
         return contains;
     }
-    public static bool digitsCheck(string input){
+    public static bool digitsCheck(string input)
+    {
         bool contains = false;
-        if(char.IsDigit(input[input.Length-1])){
+        if(char.IsDigit(input[input.Length-1]))
+        {
             return true;
         }
-        for(int i = 0; i<input.Length-1;i++){
-            if(char.IsDigit(input[i]) && char.IsDigit(input[i+1])){
+        for(int i = 0; i<input.Length-1;i++)
+        {
+            if(char.IsDigit(input[i]) && char.IsDigit(input[i+1]))
+            {
                 contains = true;
             }
         } 
         return contains;
     }
 
-    public static bool invalidChar(string input){
-        for(int i= 0; i< input.Length; i++){            
+    public static bool invalidChar(string input)
+    {
+        for(int i= 0; i< input.Length; i++)
+        {            
             char currentChar = input[i];
-            if(!char.IsDigit(currentChar)){
+            if(!char.IsDigit(currentChar))
+            {
                 switch (currentChar) {
                     case 'H':
                     case 'Q':

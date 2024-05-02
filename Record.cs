@@ -26,7 +26,8 @@ class Record
     public  void newRecord(bool record, int attempts, string mazeName){
         UI.printAttemptsRecord(attempts);
         Console.WriteLine();
-        if(!record || attempts< int.Parse(recordInfo[1])){
+        if(!record || attempts< int.Parse(recordInfo[1]))
+        {
             using (StreamWriter writer = new StreamWriter("mazes/mazeDB.csv", true))
             {
                 writer.WriteLine(); // Add a new line
@@ -43,12 +44,14 @@ class Record
                 writer.WriteLine(newLine); // Write the new line
             }
         }
-        else{
+        else
+        {
             UI.printNewRecord(false);
         }
     }
 
-    public  string[] getRecord(){
+    public  string[] getRecord()
+    {
         return recordInfo;
     }
 }

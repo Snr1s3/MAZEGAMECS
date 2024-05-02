@@ -84,7 +84,8 @@ public class Maze
         }
         return maze;
     }
-    public static bool checkMaze(string filePath){
+    public static bool checkMaze(string filePath)
+    {
         FileInfo file = new FileInfo(filePath);
         if (file.Length == 0)
         {
@@ -173,7 +174,8 @@ public class Maze
             Console.WriteLine("");
         }
     }
-    public static bool argsNumCheck(String[] args){
+    public static bool argsNumCheck(String[] args)
+    {
         if(args.Length != 1){
             if( args.Length==0){
                 UI.printErrors(6);
@@ -186,24 +188,30 @@ public class Maze
         return true;
     }
 
-    public static bool argExtensionCheck(string filename){
-        if(filename.EndsWith(".dat") || !filename.Contains(".")) {
+    public static bool argExtensionCheck(string filename)
+    {
+        if(filename.EndsWith(".dat") || !filename.Contains("."))
+        {
             return true;
         }
         UI.printErrors(5);
         return false;
     }
 
-    public static bool MazeCheck(bool emptyMaze, string filename){
-        if(File.Exists(filename)) { // Checking if the file exists
+    public static bool MazeCheck(bool emptyMaze, string filename)
+    {
+        if(File.Exists(filename)) 
+        { // Checking if the file exists
             emptyMaze =!checkMaze(filename);
-            if(!emptyMaze){
+            if(!emptyMaze)
+            {
                 UI.printErrors(1);
                 return false;
             }
             return true;
         }
-        else {
+        else
+        {
             UI.printErrors(4);
             return false;
         }
@@ -211,7 +219,8 @@ public class Maze
     }
 
     
-    public void DisplayMaze(){
+    public void DisplayMaze()
+    {
         for (int i = 0; i < mazeChars.Length; i++)
         {
             Console.Write("");

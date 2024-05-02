@@ -58,7 +58,8 @@ class UI
         print("You win!!");
     }
 
-    public static void printMazeAndMove(int attempts, Maze maze){
+    public static void printMazeAndMove(int attempts, Maze maze)
+    {
         print(""); 
         // Print the current number of attempts
         Console.WriteLine("Actual attempts: "+  attempts);
@@ -68,7 +69,8 @@ class UI
         print("");
     }
 
-    public static void printAttemptsRecord(int attempts){
+    public static void printAttemptsRecord(int attempts)
+    {
         if(attempts == 1){
             Console.WriteLine("Maze finished in "+  attempts+" attempt");
         }
@@ -77,7 +79,8 @@ class UI
         }
     }
 
-    public static void printNewRecord(bool record){
+    public static void printNewRecord(bool record)
+    {
         if(record){
             print("New record! Enter your name:");
         }
@@ -96,8 +99,10 @@ class UI
             printMazeInfo(maze.getMazeName(), 1,hasRecord, record.getRecord()); // Showing maze info
         } 
     }
-    public static void printErrors(int numError){
-        switch(numError){
+    public static void printErrors(int numError)
+    {
+        switch(numError)
+        {
             case 1 :
                 print("No maze found");
                 break;
