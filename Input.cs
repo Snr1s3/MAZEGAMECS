@@ -1,5 +1,4 @@
 using System;
-
 class Input
 {
     public static string playerInput(string input)

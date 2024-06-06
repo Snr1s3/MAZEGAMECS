@@ -37,7 +37,7 @@ class UI
         }
         else
         {
-            print("No record found");
+            print("Record not found");
         }
         print("");
         print("Actual attempt 1");

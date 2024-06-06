@@ -1,19 +1,19 @@
 # Maze Game
-
 Maze Game is a console-based game in C# where the player navigates through a maze.
 
 ## Features
 
 - Player can move through the maze.
 - The game keeps track of the player's attempts.
-- The game ends when the player crashes into a wall or reaches the exit.
+- The game restarts when the player crashes into a wall
+- The game ends when reaches the exit.
 - The game records the player's attempts and whether they reached the exit.
 
 ## How to Run
 
 1. Clone the repository.
-2. Open the project in Visual Studio Code.
-3. Run the `MazeGame.cs` file with `mono MazeGame.exe maze0x`(x = maze number)
+2. Open the project .
+3. Run the `MazeGame.exe` file with `mono MazeGame.exe mazeXX`(X = maze number)
 
 ## How to Play
 
@@ -25,6 +25,9 @@ Maze Game is a console-based game in C# where the player navigates through a maz
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+  - Alba Segura - alba.segurallamas@gmail.com
 
 ## License
 
